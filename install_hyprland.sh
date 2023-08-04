@@ -63,15 +63,16 @@ echo -e "\n${BLUE}###Enabling sshd###${NC}\n"
 systemctl enable sshd.service
 
 # Dotfiles symlink farm
-# echo -e "\n${BLUE}###Configuring DotFiles###${NC}\n"
-# cd /home/$USER_NAME/.dotfiles-hyprland
-# mkdir -p /home/$USER_NAME/.config
-# mkdir -p /home/$USER_NAME/.images
-# stow --adopt -vt /home/$USER_NAME/.config .config
-# stow --adopt -vt /home/$USER_NAME/.images .images
+echo -e "\n${BLUE}###Configuring DotFiles###${NC}\n"
+cd /home/$USER_NAME/.dotfiles-hyprland
+mkdir -p /home/$USER_NAME/.config
+mkdir -p /home/$USER_NAME/.images
+stow --adopt -vt /home/$USER_NAME/.config .config
+stow --adopt -vt /home/$USER_NAME/.images .images
 
-# Fix User Home Dir Permissions
+# Fix User Up
 chown -R $USER_NAME /home/$USER_NAME
+echo -e '\neval "$(starship init bash)"' >> /home/$USER_NAME/.bashrc
 
 # VSCode VSCODE_EXTENSIONS
 echo -e "\n${BLUE}###Configuring VSCode###${NC}\n"
@@ -85,8 +86,5 @@ git config --global init.defaultbranch main
 git config --global user.name $GIT_NAME
 git config --global user.email $GIT_EMAIL
 
-# Cleaning up and rebooting
-rm -rf /install.sh
-
-echo "Script has finished. Please reboot your PC using 'reboot' command."
+echo -e "The script has finished.\nPlease reboot your PC using 'reboot' command."
 exit
