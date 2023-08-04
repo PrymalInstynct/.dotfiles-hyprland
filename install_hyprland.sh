@@ -62,8 +62,8 @@ echo -e "\n${BLUE}###Enabling Networkd###${NC}\n"
 systemctl enable systemd-networkd.service
 echo -e "\n${BLUE}###Enabling Resolved###${NC}\n"
 systemctl enable systemd-resolved.service
-echo -e "\n${BLUE}###Enabling DHCP###${NC}\n"
-systemctl enable dhcpcd.service
+#echo -e "\n${BLUE}###Enabling DHCP###${NC}\n"
+#systemctl enable dhcpcd.service
 echo -e "\n${BLUE}###Enabling Seatd###${NC}\n"
 systemctl enable seatd.service
 echo -e "\n${BLUE}###Enabling SSH###${NC}\n"

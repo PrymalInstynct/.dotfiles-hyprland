@@ -71,9 +71,9 @@ else
   PARTITION_MODE=bios
 fi
 
-echo -e "\n${BLUE}###Starting DHCP###${NC}\n"
-systemctl start dhcpcd.service
-sleep 10
+#echo -e "\n${BLUE}###Starting DHCP###${NC}\n"
+#systemctl start dhcpcd.service
+#sleep 10
 
 echo -e "\n${BLUE}###Setting NTP###${NC}\n"
 loadkeys $KEYMAP
