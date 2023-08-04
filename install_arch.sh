@@ -1,35 +1,40 @@
 #!/usr/bin/env bash
 set -e
 
-# Configuration
-#  Partitioning
+# Variables
+
+##  Partitioning
 DEVICE="/dev/nvme0n1"
 NVME=yes
 FIRMWARE_MODE=uefi # uefi, bios, auto
 SWAP_SIZE=8192MiB
 
-#  Time and date
+##  Time and date
 TIMEZONE="America/Denver"
 
-#  Network and connectivity
+##  Network and connectivity
 REFLECTOR=yes
 REFLECTOR_COUNTRY="US"
 
-#  Graphics Drivers
+##  Graphics Drivers
 DRIVER="amd" # nouveau, amd, intel
 
-#  Kernel
+##  Kernel
 KERNEL="linux" # linux, linux-hardened, linux-zen, linux-lts
 
-#  Locale
+##  Locale
 LOCALE="en_US.UTF-8"
 LOCALE_GEN="en_US.UTF-8 UTF-8"
 KEYMAP="us"
 
-#  Bootloader
+##  Hostname
+HOSTNAME=wks01
+DOMAIN=prymal.linux
+
+##  Bootloader
 BOOTLOADER="grub"
 
-# Colors
+##  Colors
 BLUE='\033[1;34m'
 NC='\033[0m'
 
@@ -37,9 +42,9 @@ pac() {
   arch-chroot /mnt pacman -Syu --noconfirm --needed $1
 }
 
-echo -e "\n${BLUE}.dotfiles-sway Installation"
-echo -e "       ${NC}by SocketByte"
-echo -e "${BLUE}Modified for PrymalInstynct"
+echo -e "\n${BLUE}.dotfiles-hyprland Installation"
+echo -e "       ${NC}by PrymalInstynct"
+echo -e "${BLUE}Inspired by SocketByte"
 echo -e " ${NC}"
 read -p "Do you want to continue? [y/N] " yn
 case $yn in
@@ -145,8 +150,8 @@ echo "LANG=${LOCALE}" > /mnt/etc/locale.conf
 echo "KEYMAP=${KEYMAP}" > /mnt/etc/vconsole.conf
 
 echo -e "\n${BLUE}###Setting Hostname###${NC}\n"
-echo "arch-desktop" > /mnt/etc/hostname
-echo "127.0.0.1 localhost\n::1       localhost\n127.0.1.1 arch-desktop.prymal.linux arch-desktop" > /mnt/etc/hosts
+echo "${HOSTNAME}.${DOMAIN}" > /mnt/etc/hostname
+echo "127.0.0.1 localhost\n::1       localhost\n127.0.1.1 ${HOSTNAME}.${DOMAIN} ${HOSTNAME}.${DOMAIN}" > /mnt/etc/hosts
 
 echo -e "\n${BLUE}###Installing Video Driver###${NC}\n"
 case $DRIVER in
