@@ -54,25 +54,30 @@ echo -e "\n${BLUE}###Installing Hyprland###${NC}\n"
 pac "hyprland kitty waybar swaybg swaylock-effects wofi wlogout mako thunar ttf-jetbrains-mono-nerd noto-fonts-emoji polkit-gnome python-requests starship swappy grim slurp pamixer brightnessctl gvfs bluez bluez-utils lxappearance xfce4-settings dracula-gtk-theme dracula-icons-git xdg-desktop-portal-hyprland"
 
 # Environment
-echo "LIBSEAT_BACKEND=seatd" > /etc/environment
+echo "LIBSEAT_BACKEND=seatd" >> /etc/environment
+echo "EDITOR=vim" >> etc/environment
 
 # Services
+echo -e "\n${BLUE}###Enabling Networkd###${NC}\n"
+systemctl enable systemd-networkd.service
+echo -e "\n${BLUE}###Enabling Resolved###${NC}\n"
+systemctl enable systemd-resolved.service
+echo -e "\n${BLUE}###Enabling DHCP###${NC}\n"
+systemctl enable dhcpcd.service
 echo -e "\n${BLUE}###Enabling Seatd###${NC}\n"
 systemctl enable seatd.service
-echo -e "\n${BLUE}###Enabling sshd###${NC}\n"
+echo -e "\n${BLUE}###Enabling SSH###${NC}\n"
 systemctl enable sshd.service
 
 # Dotfiles symlink farm
-echo -e "\n${BLUE}###Configuring DotFiles###${NC}\n"
-cd /home/$USER_NAME/.dotfiles-hyprland
+echo -e "\n${BLUE}###Configuring User Settings###${NC}\n"
+cd /home/$USER_NAME/.dotfiles
 mkdir -p /home/$USER_NAME/.config
 mkdir -p /home/$USER_NAME/.images
 stow --adopt -vt /home/$USER_NAME/.config .config
 stow --adopt -vt /home/$USER_NAME/.images .images
-
-# Fix User Up
-chown -R $USER_NAME /home/$USER_NAME
 echo -e '\neval "$(starship init bash)"' >> /home/$USER_NAME/.bashrc
+chown -R $USER_NAME /home/$USER_NAME
 
 # VSCode VSCODE_EXTENSIONS
 echo -e "\n${BLUE}###Configuring VSCode###${NC}\n"
@@ -86,5 +91,5 @@ git config --global init.defaultbranch main
 git config --global user.name $GIT_NAME
 git config --global user.email $GIT_EMAIL
 
-echo -e "The script has finished.\nPlease reboot your PC using 'reboot' command."
+echo -e "\n${BLUE}***The script has finished.\nPlease reboot your PC using 'reboot' command.***${NC}"
 exit

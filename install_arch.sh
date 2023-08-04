@@ -197,15 +197,9 @@ arch-chroot /mnt mkinitcpio -P
 echo -e "\n${BLUE}###Configuring Extra Software###${NC}\n"
 pac "vim dhcpcd openssh git kitty-terminfo"
 
-arch-chroot /mnt systemctl enable systemd-networkd.service
-arch-chroot /mnt systemctl enable systemd-resolved.service
-arch-chroot /mnt systemctl enable dhcpcd.service
-arch-chroot /mnt systemctl enable sshd.service
-echo 'EDITOR="vim"' >> /mnt/etc/environment
-
-# # Continue the installation.
-# echo -e "\n${BLUE}###Executing Post Installation###${NC}\n"
-# cp .dotfiles-sway/install.sh /mnt/
-# cp -r .dotfiles-sway /mnt/home/$USER_NAME/.dotfiles
-# arch-chroot /mnt chmod +x install.sh
-# arch-chroot /mnt ./install.sh
+# Continue the installation.
+echo -e "\n${BLUE}###Executing Post Installation###${NC}\n"
+cp .dotfiles-hyprland/install-hyrland.sh /mnt/
+cp -r .dotfiles-hyprland /mnt/home/$USER_NAME/.dotfiles
+arch-chroot /mnt chmod +x install-hyrland.sh
+arch-chroot /mnt ./install-hyrland.sh
