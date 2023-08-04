@@ -203,4 +203,4 @@ echo -e "\n${BLUE}###Executing Post Installation###${NC}\n"
 cp .dotfiles-hyprland/install_hyprland.sh /mnt/
 cp -r .dotfiles-hyprland /mnt/home/$USER_NAME/.dotfiles
 arch-chroot /mnt chmod +x install_hyprland.sh
-arch-chroot /mnt ./install_hyrpland.sh
+arch-chroot /mnt ./install_hyprland.sh
