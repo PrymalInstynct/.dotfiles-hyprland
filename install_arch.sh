@@ -199,7 +199,7 @@ pac "vim dhcpcd openssh git kitty-terminfo"
 
 # Continue the installation.
 echo -e "\n${BLUE}###Executing Post Installation###${NC}\n"
-cp .dotfiles-hyprland/install-hyrland.sh /mnt/
+cp .dotfiles-hyprland/install_hyprland.sh /mnt/
 cp -r .dotfiles-hyprland /mnt/home/$USER_NAME/.dotfiles
-arch-chroot /mnt chmod +x install-hyrland.sh
-arch-chroot /mnt ./install-hyrland.sh
+arch-chroot /mnt chmod +x install_hyprland.sh
+arch-chroot /mnt ./install_hyrpland.sh
