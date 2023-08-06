@@ -62,8 +62,8 @@ echo -e "\n${BLUE}###Enabling Networkd###${NC}\n"
 systemctl enable systemd-networkd.service
 echo -e "\n${BLUE}###Enabling Resolved###${NC}\n"
 systemctl enable systemd-resolved.service
-#echo -e "\n${BLUE}###Enabling DHCP###${NC}\n"
-#systemctl enable dhcpcd.service
+echo -e "\n${BLUE}###Enabling DHCP###${NC}\n"
+systemctl enable dhcpcd.service
 echo -e "\n${BLUE}###Enabling Seatd###${NC}\n"
 systemctl enable seatd.service
 echo -e "\n${BLUE}###Enabling SSH###${NC}\n"
@@ -77,7 +77,7 @@ mkdir -p /home/$USER_NAME/.images
 stow --adopt -vt /home/$USER_NAME/.config .config
 stow --adopt -vt /home/$USER_NAME/.images .images
 echo -e '\neval "$(starship init bash)"' >> /home/$USER_NAME/.bashrc
-chown -R $USER_NAME /home/$USER_NAME
+chown -R $USER_NAME:$USER_NAME /home/$USER_NAME
 
 # VSCode VSCODE_EXTENSIONS
 echo -e "\n${BLUE}###Configuring VSCode###${NC}\n"
