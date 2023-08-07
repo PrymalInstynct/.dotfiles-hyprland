@@ -5,10 +5,10 @@
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
-    "height": 50,
+    "height": 40,
     "modules-left": ["clock","custom/weather","wlr/workspaces"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["network", "bluetooth", "temperature","pulseaudio","pulseaudio#microphone","tray"],
+    "modules-right": ["network", "temperature", "pulseaudio", "pulseaudio#microphone", "tray"],
     "hyprland/window": {
         "format": "{}"
     },
@@ -31,7 +31,7 @@
         }
     },
 
-   "custom/weather" : {
+    "custom/weather" : {
         //shows the current weather and forecast
         "tooltip" : true,
         "format" : "{}",
@@ -94,14 +94,5 @@
         "format-linked": "{ifname} (No IP)",
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}:{essid} {ipaddr}/{cidr}"
-    },
-
-    "bluetooth": {
-	    "format": " {status}",
-	    "format-disabled": "", // an empty format will hide the module
-	    "format-connected": " {num_connections}",
-	    "tooltip-format": "{device_alias}",
-	    "tooltip-format-connected": " {device_enumerate}",
-	    "tooltip-format-enumerate-connected": "{device_alias}"
     }
 }
