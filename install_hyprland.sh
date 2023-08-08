@@ -51,7 +51,7 @@ sudo --user=$USER_NAME sh -c "paru -S --noconfirm --needed ttf-iosevka ttf-meslo
 
 # Sway & desktop tools
 echo -e "\n${BLUE}###Installing Hyprland###${NC}\n"
-sudo --user=$USER_NAME sh -c "paru -S --noconfirm --needed hyprland kitty waybar swaybg swaylock-effects swayidle wofi wlogout mako thunar ttf-jetbrains-mono-nerd noto-fonts-emoji polkit-gnome python-requests starship swappy grim slurp pamixer brightnessctl gvfs bluez bluez-utils lxappearance xfce4-settings dracula-gtk-theme dracula-icons-git xdg-desktop-portal-hyprland"
+sudo --user=$USER_NAME sh -c "paru -S --noconfirm --needed hyprland kitty waybar swaybg swaylock-effects swayidle wofi wlogout sddm mako thunar ttf-jetbrains-mono-nerd noto-fonts-emoji polkit-gnome python-requests starship swappy grim slurp pamixer brightnessctl gvfs bluez bluez-utils lxappearance xfce4-settings dracula-gtk-theme dracula-icons-git xdg-desktop-portal-hyprland"
 
 # Environment
 echo "LIBSEAT_BACKEND=seatd" >> /etc/environment
