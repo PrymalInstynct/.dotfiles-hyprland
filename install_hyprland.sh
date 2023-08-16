@@ -37,7 +37,7 @@ pac() {
 
 # Utilities
 echo -e "\n${BLUE}###Installing Base Packages###${NC}\n"
-pac "base-devel sudo vim git cmake imv linux-headers noto-fonts-emoji openssh neofetch btop bat stow wget wl-clipboard otf-font-awesome podman buildah skopeo cni-plugins fuse-overlayfs slirp4netns man-db man-pages"
+pac "base-devel sudo vim git cmake imv linux-headers noto-fonts-emoji openssh neofetch btop bat stow wget curl bind wl-clipboard otf-font-awesome podman buildah skopeo cni-plugins fuse-overlayfs slirp4netns man-db man-pages"
 pac "bluez bluez-utils alsa-utils pipewire pipewire-alsa pipewire-pulse blueberry pavucontrol zip unzip unrar"
 
 # Paru, fonts and other AUR tools
