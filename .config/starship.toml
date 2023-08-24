@@ -1,6 +1,7 @@
 format = """
-[](#9900ff)\
+[](#9900ff)\
 [✘✘](bold #000000 bg:#9900ff)\
+$username\
 [](bg:#000000 fg:#9900ff)\
 $directory\
 [](fg:#000000 bg:#bfbfbf)\
@@ -18,34 +19,16 @@ $time\
 [ ](fg:#9900ff)\
 """
 
-right_format = """
-$status\
-$cmd_duration\
-"""
-
 # Disable the blank line at the start of the prompt
 # add_newline = false
 
 command_timeout = 900
 
-[status]
-style = "bold #000000 bg:#9900ff "
-symbol = "✗ "
-format = '[](fg:#9900ff)[$symbol$common_meaning$signal_name$maybe_int ]($style)[](fg:#9900ff bg:#000000)'
-map_symbol = true
-disabled = false
-
-[cmd_duration]
-style = "bold #9900ff bg:#000000"
-min_time = 1000
-format = "[  $duration]($style)[](fg:#000000)"
-
 # You can also replace your username with a neat symbol like  to save some space
 [username]
-style_user = "bold #cccccc bg:#9900ff"
-style_root = "bold #cccccc bg:#9c1717"
-format = 'user: [$user]($style) '
-disabled = false
+style_user = "#cccccc bg:#9900ff"
+style_root = "#cccccc bg:#9c1717"
+format = '[ $user ]($style)'
 show_always = true
 
 [directory]

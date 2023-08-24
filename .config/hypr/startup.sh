@@ -18,12 +18,6 @@ sleep 2
 sleep 2
 # Change focus to DP-2
 /usr/bin/hyprctl dispatch focusmonitor DP-2
-# Open Discord in workspace 2 on DP-2
-/usr/bin/hyprctl dispatch exec [workspace 2] /usr/bin/discord
-# Wait for Discord to be fully started (Stupid Splash Screen)
-sleep 5
-# Ensure DP-2 is still in focous
-/usr/bin/hyprctl dispatch focusmonitor DP-2
 # Open Spotify in workspace 2
 /usr/bin/hyprctl dispatch exec [workspace 2] /usr/bin/spotify
 # Change focus to Brave
