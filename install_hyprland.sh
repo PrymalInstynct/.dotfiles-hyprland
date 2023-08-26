@@ -35,27 +35,45 @@ pac() {
   pacman -Syu --noconfirm --needed $1
 }
 
-# Utilities
+# Base Packages
 echo -e "\n${BLUE}###Installing Base Packages###${NC}\n"
-pac "base-devel sudo vim git cmake imv linux-headers noto-fonts-emoji openssh neofetch btop bat stow wget curl bind wl-clipboard otf-font-awesome podman buildah skopeo cni-plugins fuse-overlayfs slirp4netns man-db man-pages"
-pac "bluez bluez-utils alsa-utils pipewire pipewire-alsa pipewire-pulse blueberry pavucontrol zip unzip unrar"
+pac "base-devel sudo git cmake imv linux-headers openssh stow bind"
 
-# Paru, fonts and other AUR tools
+# Audio Utilities
+echo -e "\n${BLUE}###Installing Audio Utilities###${NC}\n"
+pac "bluez bluez-utils alsa-utils pipewire pipewire-alsa pipewire-pulse blueberry pavucontrol pamixer"
+
+# Paru,
 echo -e "\n${BLUE}###Installing Paru###${NC}\n"
 git clone https://aur.archlinux.org/paru.git
 chown -R $USER_NAME paru
 sudo --user=$USER_NAME sh -c "cd /paru && makepkg -si"
 
-echo -e "\n${BLUE}###Installing AUR Packages###${NC}\n"
-sudo --user=$USER_NAME sh -c "paru -S --noconfirm --needed ttf-iosevka ttf-meslo visual-studio-code-bin brave-bin kitty discord ffmpeg ffmpegthumbnailer thunar thunar-archive-plugin tumbler spotify direnv sops age tldr python-i3ipc"
+echo -e "\n${BLUE}###Installing CLI Packages (PARU)###${NC}\n"
+sudo --user=$USER_NAME sh -c "paru -S --noconfirm --needed direnv sops age python-i3ipc trash pico joe vim neovim tree neofetch btop bat wget curl man-db man-pages tldr zip unzip unrar wl-clipboard python-requests"
 
-# Sway & desktop tools
-echo -e "\n${BLUE}###Installing Hyprland###${NC}\n"
-sudo --user=$USER_NAME sh -c "paru -S --noconfirm --needed hyprland kitty waybar hyprpaper hyprpicker swaylock-effects swayidle wofi wlogout sddm mako thunar ttf-jetbrains-mono-nerd noto-fonts-emoji polkit-gnome python-requests starship swappy grim slurp pamixer brightnessctl gvfs bluez bluez-utils lxappearance xfce4-settings dracula-gtk-theme dracula-icons-git xdg-desktop-portal-hyprland trash pico joe tree neovim"
+# Container Utilities
+echo -e "\n${BLUE}###Installing Container Utilities (PARU)###${NC}\n"
+sudo --user=$USER_NAME sh -c "paru -S --noconfirm --needed podman buildah skopeo cni-plugins fuse-overlayfs slirp4netns"
+
+# Hyprland
+echo -e "\n${BLUE}###Installing Hyprland (PARU)###${NC}\n"
+sudo --user=$USER_NAME sh -c "paru -S --noconfirm --needed hyprland waybar-hyprland-git hyprpaper hyprpicker-git xdg-desktop-portal-hyprland swaylock-effects swayidle wofi wlogout sddm-git sddm-theme-astronaut mako polkit-gnome"
+
+echo -e "\n${BLUE}###Installing Desktop Packages (PARU)###${NC}\n"
+sudo --user=$USER_NAME sh -c "paru -S --noconfirm --needed kitty starship visual-studio-code-bin brave-bin discord spotify ffmpeg ffmpegthumbnailer gvfs thunar thunar-archive-plugin tumbler swappy grim slurp brightnessctl"
+
+# Theme
+echo -e "\n${BLUE}###Installing Themes (PARU)###${NC}\n"
+sudo --user=$USER_NAME sh -c "paru -S --noconfirm --needed lxappearance xfce4-settings dracula-gtk-theme dracula-icons-git"
+
+# Fonts
+echo -e "\n${BLUE}###Installing Fonts (PARU)###${NC}\n"
+sudo --user=$USER_NAME sh -c "paru -S --noconfirm --needed noto-fonts-emoji otf-font-awesome ttf-iosevka ttf-meslo ttf-jetbrains-mono-nerd"
 
 # Environment
 echo "LIBSEAT_BACKEND=seatd" >> /etc/environment
-echo "EDITOR=vim" >> etc/environment
+echo "EDITOR=nvim" >> etc/environment
 
 # Services
 echo -e "\n${BLUE}###Enabling Networkd###${NC}\n"
@@ -87,9 +105,9 @@ done
 
 # Git
 echo -e "\n${BLUE}###Configuring Git###${NC}\n"
-git config --global init.defaultbranch main
-git config --global user.name $GIT_NAME
-git config --global user.email $GIT_EMAIL
+sudo --user=$USER_NAME sh -c "git config --global init.defaultbranch main"
+sudo --user=$USER_NAME sh -c "git config --global user.name $GIT_NAME"
+sudo --user=$USER_NAME sh -c "git config --global user.email $GIT_EMAIL"
 
 echo -e "\n${BLUE}***The script has finished.***\n\n***Please reboot your PC using 'reboot' command.***${NC}"
 exit
