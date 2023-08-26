@@ -50,7 +50,7 @@ chown -R $USER_NAME paru
 sudo --user=$USER_NAME sh -c "cd /paru && makepkg -si"
 
 echo -e "\n${BLUE}###Installing CLI Packages (PARU)###${NC}\n"
-sudo --user=$USER_NAME sh -c "paru -S --noconfirm --needed direnv sops age python-i3ipc trash pico joe vim neovim tree neofetch btop bat wget curl man-db man-pages tldr zip unzip unrar wl-clipboard python-requests jq"
+sudo --user=$USER_NAME sh -c "paru -S --noconfirm --needed direnv sops age python-i3ipc trash pico joe vim neovim tree neofetch btop bat wget curl man-db man-pages tldr zip unzip unrar p7zip wl-clipboard python-requests jq"
 
 # Container Utilities
 echo -e "\n${BLUE}###Installing Container Utilities (PARU)###${NC}\n"
@@ -88,15 +88,22 @@ echo -e "\n${BLUE}###Enabling SSH###${NC}\n"
 systemctl enable sshd.service
 
 # Dotfiles symlink farm
-echo -e "\n${BLUE}###Configuring User Settings###${NC}\n"
+echo -e "\n${BLUE}###Configuring ${USER_NAME}'s Settings###${NC}\n"
 sudo --user=$USER_NAME sh -c "xdg-user-dirs-update"
 cd /home/$USER_NAME/.dotfiles
 mkdir -p /home/$USER_NAME/.config
 mkdir -p /home/$USER_NAME/.images
 stow --adopt -vt /home/$USER_NAME/.config .config
 cp .images/* /home/$USER_NAME/.images/
-echo -e '\neval "$(starship init bash)"' >> /home/$USER_NAME/.bashrc
+cp starship_root.toml /root/.config/starship/toml
+cp ../.bashrc /home/$USER_NAME/
+cp ../.bash_profile /home/$USER_NAME/
 chown -R $USER_NAME:$USER_NAME /home/$USER_NAME
+
+echo -e "\n${BLUE}###Configuring Root User Settings###${NC}\n"
+cp starship_root.toml /root/.config/starship/toml
+cp ../.bashrc /root/
+cp ../.bash_profile /root/
 
 # VSCode VSCODE_EXTENSIONS
 echo -e "\n${BLUE}###Configuring VSCode###${NC}\n"

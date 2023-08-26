@@ -1,8 +1,8 @@
 format = """
-[](#9900ff)\
-[✘✘](bold #000000 bg:#9900ff)\
+[](#a64d79)\
+[✘✘](bold #000000 bg:#a64d79)\
 $username\
-[](bg:#000000 fg:#9900ff)\
+[](bg:#000000 fg:#a64d79)\
 $directory\
 [](fg:#000000 bg:#bfbfbf)\
 $git_branch\
@@ -14,25 +14,25 @@ $git_status\
 [$java](bg:#000000)\
 [$python](bg:#000000)\
 [$golang](bg:#000000)\
-[](fg:#000000 bg:#9900ff)\
+[](fg:#000000 bg:#a64d79)\
 $time\
-[ ](fg:#9900ff)\
+[ ](fg:#a64d79)\
 """
 
 # Disable the blank line at the start of the prompt
-# add_newline = false
+add_newline = true
 
 command_timeout = 900
 
 # You can also replace your username with a neat symbol like  to save some space
 [username]
-style_user = "#cccccc bg:#9900ff"
-style_root = "#cccccc bg:#9c1717"
+style_user = "#cccccc bg:#a64d79"
+style_root = "#cccccc bg:#a64d79"
 format = '[ $user ]($style)'
 show_always = true
 
 [directory]
-style = "bold #9900ff bg:#000000"
+style = "bold #a64d79 bg:#000000"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -62,34 +62,34 @@ format = '[[($all_status$ahead_behind )](bold #000000 bg:#bfbfbf)]($style)'
 
 [nodejs]
 symbol = ""
-style = "bold #9900ff bg:#000000"
+style = "bold #a64d79 bg:#000000"
 format = '[[ $symbol ($version) ](bg:#000000)]($style)'
 
 [rust]
 symbol = ""
-style = "bold #9900ff bg:#000000"
-format = '[[ $symbol ($version) ](bg:#9900ff)]($style)'
+style = "bold #a64d79 bg:#000000"
+format = '[[ $symbol ($version) ](bg:#a64d79)]($style)'
 
 [golang]
-style = "bold #9900ff bg:#000000"
+style = "bold #a64d79 bg:#000000"
 format = "[via $symbol($version )]($style)"
 
 [python]
-style = "bold #9900ff bg:#000000"
+style = "bold #a64d79 bg:#000000"
 format = '[via ${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 #pyenv_version_name = true
 
 [java]
-style = "bold #9900ff bg:#000000"
+style = "bold #a64d79 bg:#000000"
 symbol = " "
-format = "[via $symbol[$version](bold #9900ff bg:#000000)]($style)"
+format = "[via $symbol[$version](bold #a64d79 bg:#000000)]($style)"
 
 [cmake]
-style = "bold #9900ff bg:#000000"
+style = "bold #a64d79 bg:#000000"
 
 [time]
 disabled = false
 use_12hr = true
 time_format = "%R" # Hour:Minute Format
-style = "bold #ffffff bg:#9900ff"
-format = '[[ 󰅒 $time ](#ffffff bg:#9900ff)]($style)'
+style = "bold #ffffff bg:#a64d79"
+format = '[[ $time ](#ffffff bg:#a64d79)]($style)'
