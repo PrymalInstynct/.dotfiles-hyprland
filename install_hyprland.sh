@@ -94,7 +94,7 @@ cd /home/$USER_NAME/.dotfiles
 mkdir -p /home/$USER_NAME/.config
 mkdir -p /home/$USER_NAME/.images
 stow --adopt -vt /home/$USER_NAME/.config .config
-stow --adopt -vt /home/$USER_NAME/.images .images
+cp .images/* /home/$USER_NAME/.images/
 echo -e '\neval "$(starship init bash)"' >> /home/$USER_NAME/.bashrc
 chown -R $USER_NAME:$USER_NAME /home/$USER_NAME
 
