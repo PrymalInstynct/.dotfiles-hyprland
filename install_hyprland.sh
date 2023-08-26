@@ -109,5 +109,5 @@ sudo --user=$USER_NAME sh -c "git config --global init.defaultbranch main"
 sudo --user=$USER_NAME sh -c "git config --global user.name $GIT_NAME"
 sudo --user=$USER_NAME sh -c "git config --global user.email $GIT_EMAIL"
 
-echo -e "\n${BLUE}***The script has finished.***\n\n***Please reboot your PC using 'reboot' command.***${NC}"
+echo -e "\n${BLUE}***The script has completed successfully.***\n\n***Please reboot your computer using the 'reboot' command.***${NC}"
 exit
