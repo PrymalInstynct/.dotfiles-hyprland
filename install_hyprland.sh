@@ -41,7 +41,7 @@ pac "base-devel sudo git cmake imv linux-headers openssh stow bind"
 
 # Audio Utilities
 echo -e "\n${BLUE}###Installing Audio Utilities###${NC}\n"
-pac "bluez bluez-utils alsa-utils pipewire pipewire-alsa pipewire-pulse blueberry pavucontrol pamixer"
+pac "bluez bluez-utils alsa-utils pipewire pipewire-alsa pipewire-pulse blueberry pavucontrol pamixer playerctl"
 
 # Paru,
 echo -e "\n${BLUE}###Installing Paru###${NC}\n"
@@ -50,7 +50,7 @@ chown -R $USER_NAME paru
 sudo --user=$USER_NAME sh -c "cd /paru && makepkg -si"
 
 echo -e "\n${BLUE}###Installing CLI Packages (PARU)###${NC}\n"
-sudo --user=$USER_NAME sh -c "paru -S --noconfirm --needed direnv sops age python-i3ipc trash pico joe vim neovim tree neofetch btop bat wget curl man-db man-pages tldr zip unzip unrar wl-clipboard python-requests"
+sudo --user=$USER_NAME sh -c "paru -S --noconfirm --needed direnv sops age python-i3ipc trash pico joe vim neovim tree neofetch btop bat wget curl man-db man-pages tldr zip unzip unrar wl-clipboard python-requests jq"
 
 # Container Utilities
 echo -e "\n${BLUE}###Installing Container Utilities (PARU)###${NC}\n"
@@ -61,7 +61,7 @@ echo -e "\n${BLUE}###Installing Hyprland (PARU)###${NC}\n"
 sudo --user=$USER_NAME sh -c "paru -S --noconfirm --needed hyprland waybar-hyprland-git hyprpaper hyprpicker-git xdg-desktop-portal-hyprland swaylock-effects swayidle wofi wlogout sddm-git sddm-theme-astronaut mako polkit-gnome"
 
 echo -e "\n${BLUE}###Installing Desktop Packages (PARU)###${NC}\n"
-sudo --user=$USER_NAME sh -c "paru -S --noconfirm --needed kitty starship visual-studio-code-bin brave-bin discord spotify ffmpeg ffmpegthumbnailer gvfs thunar thunar-archive-plugin tumbler swappy grim slurp brightnessctl"
+sudo --user=$USER_NAME sh -c "paru -S --noconfirm --needed kitty starship visual-studio-code-bin brave-bin discord spotify ffmpeg ffmpegthumbnailer gvfs thunar thunar-archive-plugin tumbler viewnior swappy grim slurp brightnessctl xdg-user-dirs"
 
 # Theme
 echo -e "\n${BLUE}###Installing Themes (PARU)###${NC}\n"
@@ -89,6 +89,7 @@ systemctl enable sshd.service
 
 # Dotfiles symlink farm
 echo -e "\n${BLUE}###Configuring User Settings###${NC}\n"
+sudo --user=$USER_NAME sh -c "xdg-user-dirs-update"
 cd /home/$USER_NAME/.dotfiles
 mkdir -p /home/$USER_NAME/.config
 mkdir -p /home/$USER_NAME/.images
