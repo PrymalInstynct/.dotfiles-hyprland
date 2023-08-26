@@ -70,9 +70,8 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 #######################################################
 
 # Alias's to modified commands
-alias cp='cp -i'
+alias cp='rsync --info=progress2'
 alias mv='mv -i'
-alias rm='trash -v'
 alias mkdir='mkdir -p'
 alias ps='ps auxf'
 alias less='less -R'
@@ -151,27 +150,6 @@ extract () {
 			echo "'$archive' is not a valid file!"
 		fi
 	done
-}
-
-# Copy file with a progress bar
-cpp()
-{
-	set -e
-	strace -q -ewrite cp -- "${1}" "${2}" 2>&1 \
-	| awk '{
-	count += $NF
-	if (count % 10 == 0) {
-		percent = count / total_size * 100
-		printf "%3d%% [", percent
-		for (i=0;i<=percent;i++)
-			printf "="
-			printf ">"
-			for (i=percent;i<100;i++)
-				printf " "
-				printf "]\r"
-			}
-		}
-	END { print "" }' total_size="$(stat -c '%s' "${1}")" count=0
 }
 
 PS1='[\u@\h \W]\$ '
