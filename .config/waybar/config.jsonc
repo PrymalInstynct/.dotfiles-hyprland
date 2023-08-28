@@ -6,9 +6,9 @@
     "passthrough": false,
     "gtk-layer-shell": true,
     "height": 40,
-    "modules-left": ["clock","custom/weather","wlr/workspaces"],
+    "modules-left": ["clock", "custom/weather", "wlr/taskbar", "wlr/workspaces"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["network", "temperature", "pulseaudio", "pulseaudio#microphone", "tray"],
+    "modules-right": ["cpu", "memory", "disk", "temperature", "network", "pulseaudio"],
     "hyprland/window": {
         "format": "{}"
     },
@@ -55,6 +55,7 @@
         "tooltip": false,
         "format-muted": " Muted",
         "on-click": "pamixer -t",
+	"on-click-right": "pavucontrol",
         "on-scroll-up": "pamixer -i 5",
         "on-scroll-down": "pamixer -d 5",
         "scroll-step": 5,
@@ -69,19 +70,9 @@
         }
     },
 
-    "pulseaudio#microphone": {
-        "format": "{format_source}",
-        "format-source": " {volume}%",
-        "format-source-muted": " Muted",
-        "on-click": "pamixer --default-source -t",
-        "on-scroll-up": "pamixer --default-source -i 5",
-        "on-scroll-down": "pamixer --default-source -d 5",
-        "scroll-step": 5
-    },
-    
     "temperature": {
-        "thermal-zone": 1,
-        "format": "{temperatureF}°F ",
+        "thermal-zone": 0,
+        "format": "{temperatureC}°C ",
         "critical-threshold": 80,
         "format-critical": "{temperatureC}°C "
     },
@@ -94,5 +85,16 @@
         "format-linked": "{ifname} (No IP)",
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}:{essid} {ipaddr}/{cidr}"
+    },
+
+    "cpu": {
+        "interval": 1,
+        "format": " {}%"
+    },
+
+    "memory": {
+        "interval": 30,
+        "format": "󰍛 {used:0.1f}G",
+        "tooltip-format": "󰍛 {used:0.1f}G/{total:0.1f}G"
     }
 }
