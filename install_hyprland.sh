@@ -52,10 +52,6 @@ sudo --user=$USER_NAME sh -c "cd /paru && makepkg -si"
 echo -e "\n${BLUE}###Installing CLI Packages (PARU)###${NC}\n"
 sudo --user=$USER_NAME sh -c "paru -S --noconfirm --needed direnv sops age python-i3ipc pico joe vim neovim tree neofetch btop bat wget curl man-db man-pages tldr zip unzip unrar p7zip wl-clipboard python-requests jq progress rsync"
 
-# Container Utilities
-echo -e "\n${BLUE}###Installing Container Utilities (PARU)###${NC}\n"
-sudo --user=$USER_NAME sh -c "paru -S --noconfirm --needed podman buildah skopeo cni-plugins fuse-overlayfs slirp4netns"
-
 # Hyprland
 echo -e "\n${BLUE}###Installing Hyprland (PARU)###${NC}\n"
 sudo --user=$USER_NAME sh -c "paru -S --noconfirm --needed hyprland waybar-hyprland-git hyprpaper hyprpicker-git xdg-desktop-portal-hyprland swaylock-effects swayidle wofi wlogout sddm-git sddm-theme-astronaut mako polkit-gnome"
