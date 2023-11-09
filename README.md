@@ -25,7 +25,8 @@ Treat these dotfiles as a solid, sensible base package for your own dotfiles. En
 First install Git and clone the repository using the command below.
 
 ```
-pacman -S git
+pacman -Sy
+pacman -S git vim
 git clone https://github.com/PrymalInstynct/.dotfiles-sway
 ```
 
